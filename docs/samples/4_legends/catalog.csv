@@ -1,0 +1,4 @@
+name[1],name[2],type,url,legend
+Mapbox Vector Tiles,,group
+,道路（東京都23区）,mvt,https://plateau.geospatial.jp/main/data/mvt/tran/13100_tokyo/{z}/{x}/{y}.mvt,
+,用途地域（東京都23区）,mvt,https://plateau.geospatial.jp/main/data/mvt/yotochiiki/13100_tokyo/{z}/{x}/{y}.mvt,yotochiiki

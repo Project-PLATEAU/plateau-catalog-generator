@@ -1,0 +1,7 @@
+{
+  "style": {
+    "color": {
+      "conditions": [["true", "color('#FFFFFF', 1.0)"]]
+    }
+  }
+}

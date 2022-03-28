@@ -1,0 +1,4 @@
+mvtLayer,mvtFillColor,mvtLineColor,mvtFilter,mvtLayerOrder
+layer_1,#0066ff,,,1
+layer_2,,#ff0000,,3
+layer_3,,#00ff00,class == "203",2

@@ -1,0 +1,12 @@
+{
+  "shortReportSections": [
+    {
+      "name": "_",
+      "content": "<img src='{{ROOT}}/images/disaster_hospital.png'>"
+    },
+    {
+      "name": "_",
+      "content": "Some notes on disaster hospitals..."
+    }
+  ]
+}

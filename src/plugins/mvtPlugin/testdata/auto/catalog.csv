@@ -1,0 +1,2 @@
+name[0],type,url,legend,description
+Test dataset,mvt,https://example.com/{z}/{x}/{y}.mvt,,

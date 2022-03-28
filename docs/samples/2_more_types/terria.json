@@ -1,0 +1,265 @@
+{
+  "catalog": [
+    {
+      "id": "//3D Tiles",
+      "name": "3D Tiles",
+      "type": "group",
+      "members": [
+        {
+          "id": "//3D Tiles/建物モデル (千代田区)",
+          "name": "建物モデル (千代田区)",
+          "type": "3d-tiles",
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json",
+          "hideSource": true
+        },
+        {
+          "id": "//3D Tiles/橋梁モデル (東京都23区)",
+          "name": "橋梁モデル (東京都23区)",
+          "type": "3d-tiles",
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/brid/13100_tokyo/tileset.json",
+          "hideSource": true
+        }
+      ]
+    },
+    {
+      "id": "//Mapbox Vector Tiles",
+      "name": "Mapbox Vector Tiles",
+      "type": "group",
+      "members": [
+        {
+          "id": "//Mapbox Vector Tiles/道路（東京都23区）",
+          "name": "道路（東京都23区）",
+          "type": "mvt",
+          "url": "https://plateau.geospatial.jp/main/data/mvt/tran/13100_tokyo/{z}/{x}/{y}.mvt",
+          "hideSource": true,
+          "style": {
+            "layers": [
+              {
+                "source-layer": "road",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(0 100% 50%)"
+                }
+              }
+            ]
+          },
+          "legends": [
+            {
+              "title": "凡例",
+              "items": [
+                {
+                  "title": "road",
+                  "color": "hsl(0 100% 50%)"
+                }
+              ]
+            }
+          ],
+          "rectangle": {
+            "west": 139.49190633999999,
+            "south": 35.47926424,
+            "east": 139.98890746,
+            "north": 35.87386866
+          }
+        },
+        {
+          "id": "//Mapbox Vector Tiles/用途地域（東京都23区）",
+          "name": "用途地域（東京都23区）",
+          "type": "mvt",
+          "url": "https://plateau.geospatial.jp/main/data/mvt/yotochiiki/13100_tokyo/{z}/{x}/{y}.mvt",
+          "hideSource": true,
+          "style": {
+            "layers": [
+              {
+                "source-layer": "yoto_10",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(0 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_6",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(30 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_5",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(60 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_11",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(90 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_1",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(120 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_3",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(150 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_9",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(180 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_4",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(210 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_12",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(240 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_13",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(270 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_7",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(300 100% 50%)"
+                }
+              },
+              {
+                "source-layer": "yoto_2",
+                "type": "fill",
+                "paint": {
+                  "fill-color": "hsl(330 100% 50%)"
+                }
+              }
+            ]
+          },
+          "legends": [
+            {
+              "title": "凡例",
+              "items": [
+                {
+                  "title": "yoto_10",
+                  "color": "hsl(0 100% 50%)"
+                },
+                {
+                  "title": "yoto_6",
+                  "color": "hsl(30 100% 50%)"
+                },
+                {
+                  "title": "yoto_5",
+                  "color": "hsl(60 100% 50%)"
+                },
+                {
+                  "title": "yoto_11",
+                  "color": "hsl(90 100% 50%)"
+                },
+                {
+                  "title": "yoto_1",
+                  "color": "hsl(120 100% 50%)"
+                },
+                {
+                  "title": "yoto_3",
+                  "color": "hsl(150 100% 50%)"
+                },
+                {
+                  "title": "yoto_9",
+                  "color": "hsl(180 100% 50%)"
+                },
+                {
+                  "title": "yoto_4",
+                  "color": "hsl(210 100% 50%)"
+                },
+                {
+                  "title": "yoto_12",
+                  "color": "hsl(240 100% 50%)"
+                },
+                {
+                  "title": "yoto_13",
+                  "color": "hsl(270 100% 50%)"
+                },
+                {
+                  "title": "yoto_7",
+                  "color": "hsl(300 100% 50%)"
+                },
+                {
+                  "title": "yoto_2",
+                  "color": "hsl(330 100% 50%)"
+                }
+              ]
+            }
+          ],
+          "rectangle": {
+            "west": 139.49179388,
+            "south": 35.47773976,
+            "east": 139.98871072,
+            "north": 35.87436704
+          }
+        }
+      ]
+    },
+    {
+      "id": "//GeoJSON",
+      "name": "GeoJSON",
+      "type": "group",
+      "members": [
+        {
+          "id": "//GeoJSON/鉄道（東京都23区）",
+          "name": "鉄道（東京都23区）",
+          "type": "geojson",
+          "url": "https://plateau.geospatial.jp/main/data/geojson/railway/13100_tokyo.json",
+          "hideSource": true
+        },
+        {
+          "id": "//GeoJSON/緊急輸送道路（東京都23区）",
+          "name": "緊急輸送道路（東京都23区）",
+          "type": "geojson",
+          "url": "https://plateau.geospatial.jp/main/data/geojson/emergency_route/13100_tokyo.json",
+          "hideSource": true
+        }
+      ]
+    },
+    {
+      "id": "//CZML",
+      "name": "CZML",
+      "type": "group",
+      "members": [
+        {
+          "id": "//CZML/避難施設（千代田区）",
+          "name": "避難施設（千代田区）",
+          "type": "czml",
+          "url": "https://plateau.geospatial.jp/main/data/czml/shelter/13100_tokyo/13101_chiyoda-ku/shelter.czml",
+          "hideSource": true
+        },
+        {
+          "id": "//CZML/行政界（東京都23区）",
+          "name": "行政界（東京都23区）",
+          "type": "czml",
+          "url": "https://plateau.geospatial.jp/main/data/czml/border/13100_tokyo.czml",
+          "hideSource": true
+        }
+      ]
+    }
+  ]
+}

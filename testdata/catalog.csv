@@ -1,0 +1,11 @@
+__test_purpose,name[0],name[1],name[2],name[3],type,url,options,feature_info_template,feature_info_template[include],feature_info_template[exclude],description,description[0]
+A regular gruop,PLATEAU dataset,,,,group,,,,,,group_common,plateau
+A regular group,,Buildings,,,group,,,,,,group_common,Buildings
+Feature info templates,,,Buildings (Chiyoda),,3d-tiles,{{ROOT}}/bldg_chiyoda/tileset.json,"bldg_color_height,bldg_color_base",bldg,"arakawa*,kandagawa*",tamagawa*,,
+A regular group,,Disaster,,,group,,,,,,group_common,disaster
+Description templates,,,Evacuation center,,kml,{{ROOT}}/evacuation_center.kml,,,,,dataset_common,evacuation centers
+Rename short report sectiong,,,Disaster hospitals,,kml,{{ROOT}}/disaster_hospital.kml,disaster_hospital,,,,dataset_common,evacuation centers
+Switchable urls,,,Hazzard map,,kml,{{ROOT}}/hazzard_map_flood.kml,,,,,dataset_common,hazzard map
+Switchable urls,,,,Flood,kml,{{ROOT}}/hazzard_map_flood.kml,,,,,,
+Switchable urls,,,,Tsunami,kml,{{ROOT}}/hazzard_map_tsunami.kml,,,,,,
+Multi root catalog,Root Group 2,,,,group,,,,,,,

@@ -1,0 +1,21 @@
+{
+  "catalog": [
+    {
+      "id": "//建物モデル",
+      "name": "建物モデル",
+      "type": "group",
+      "members": [
+        {
+          "id": "//建物モデル/建物モデル (千代田区)",
+          "name": "建物モデル (千代田区)",
+          "type": "3d-tiles",
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json",
+          "hideSource": true,
+          "featureInfoTemplate": {
+            "template": "<table><tr><td>名称</td><td>{{名称}}</td></tr><tr><td>高さ (m)</td><td>{{計測高さ}}</td></tr></table>"
+          }
+        }
+      ]
+    }
+  ]
+}

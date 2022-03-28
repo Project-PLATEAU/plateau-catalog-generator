@@ -1,0 +1,46 @@
+{
+  "name": "plateau-catalog-generator",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TerriaJS 製 PLATEAU VIEW のためのカタログファイルジェネレーター",
+  "bin": "./build/cli/index.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "fix": "eslint --ext .js,.ts ./ --fix && prettier ./src/ --write",
+    "check": "npm run check:tsc && npm run check:eslint && npm run check:prettier",
+    "check:eslint": "eslint --ext .js,.ts ./",
+    "check:prettier": "prettier ./src/ --check",
+    "check:tsc": "tsc --noEmit"
+  },
+  "author": "Pacific Spatial Solutions Inc.",
+  "type": "module",
+  "license": "(private)",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "commander": "^9.0.0",
+    "jsep": "^1.2.0",
+    "matcher": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "babel-jest": "^27.0.6",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "rollup": "^2.59.0"
+  }
+}

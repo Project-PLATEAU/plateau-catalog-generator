@@ -1,0 +1,36 @@
+{
+  "catalog": [
+    {
+      "id": "//建物モデル",
+      "name": "建物モデル",
+      "type": "group",
+      "description": "建物モデルのフォルダです。",
+      "members": [
+        {
+          "id": "//建物モデル/建物モデル (千代田区)",
+          "name": "建物モデル (千代田区)",
+          "type": "3d-tiles",
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json",
+          "hideSource": true,
+          "description": "千代田区の建物モデルのデータセットです。"
+        }
+      ]
+    },
+    {
+      "id": "//橋梁モデル",
+      "name": "橋梁モデル",
+      "type": "group",
+      "description": "橋梁モデルのフォルダです。",
+      "members": [
+        {
+          "id": "//橋梁モデル/橋梁モデル (東京都23区)",
+          "name": "橋梁モデル (東京都23区)",
+          "type": "3d-tiles",
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/brid/13100_tokyo/tileset.json",
+          "hideSource": true,
+          "description": "東京都23区の橋梁モデルのデータセットです。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+name[1],name[2],type,url,feature_info_template
+建物モデル,,group,
+,建物モデル (千代田区),3d-tiles,https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json,bldg

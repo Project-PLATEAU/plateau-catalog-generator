@@ -1,0 +1,12 @@
+{
+  "filters": [
+    {
+      "name": "地上階数で絞り込み",
+      "property": "地上階数",
+      "minimumValue": 1,
+      "maximumValue": 50,
+      "minimumShown": 1,
+      "maximumShown": 50
+    }
+  ]
+}

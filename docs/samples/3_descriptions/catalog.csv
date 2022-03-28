@@ -1,0 +1,5 @@
+name[1],name[2],type,url,description,description[1]
+建物モデル,,group,,template_1,建物モデル
+,建物モデル (千代田区),3d-tiles,https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json,template_2,千代田区の建物モデル
+橋梁モデル,,group,,template_1,橋梁モデル
+,橋梁モデル (東京都23区),3d-tiles,https://plateau.geospatial.jp/main/data/3d-tiles/brid/13100_tokyo/tileset.json,template_2,東京都23区の橋梁モデル

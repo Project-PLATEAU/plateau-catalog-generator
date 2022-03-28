@@ -1,0 +1,12 @@
+{
+  "filters": [
+    {
+      "name": "高さで絞り込み",
+      "property": "計測高さ",
+      "minimumValue": 0,
+      "maximumValue": 200,
+      "minimumShown": 0,
+      "maximumShown": 200
+    }
+  ]
+}

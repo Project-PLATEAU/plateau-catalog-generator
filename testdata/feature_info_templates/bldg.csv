@@ -1,0 +1,9 @@
+default,name,property
+include,Name,name
+include,Area (m2),area
+exclude,Arakawa innudation depth,arakawa_innudation_depth
+exclude,Arakawa innudation duration,arakawa_innudation_duration
+exclude,Kandagawa innudation depth,kandagawa_innudation_depth
+exclude,Kandagawa innudation duration,kandagawa_innudation_duration
+include,Tamagawa innudation depth,tamagawa_innudation_depth
+include,Tamagawa innudation duration,tamagawa_innudation_duration

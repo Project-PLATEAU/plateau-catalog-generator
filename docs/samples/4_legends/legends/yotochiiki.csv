@@ -1,0 +1,13 @@
+mvtLayer,title,color,outlineColor
+yoto_1,第1種低層住居専用地域,#00b285,
+yoto_2,第2種低層住居専用地域,#7bd2b7,
+yoto_3,第1種中高層住居専用地域,#78ce3f,
+yoto_4,第2種中高層住居専用地域,#addf21,
+yoto_5,第1種住居地域,#ebee5e,
+yoto_6,第2種住居地域,#ffd2b6,
+yoto_7,準住居地域,#ffa638,
+yoto_9,近隣商業地域,#ffb0c3,
+yoto_10,商業地域,#ff593d,
+yoto_11,準工業地域,#a794c5,
+yoto_12,工業地域,#b9eaff,
+yoto_13,工業専用地域,#0ec7ff,
