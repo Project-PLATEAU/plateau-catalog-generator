@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x, 17.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check
+      - run: npm test

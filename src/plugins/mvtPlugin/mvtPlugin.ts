@@ -1,15 +1,15 @@
-import Backend from "../../core/Backend";
 import Deferred from "../../core/Deferred";
-import maybeParseJson from "../../core/maybeParseJson";
-import resolveMatrix from "../../core/resolveMatrix";
+import Logger from "../../core/Logger";
+import makeParseJson from "../../core/makeParseJson";
 import { Plugin } from "../../core/TerriaCatalogBuilder";
 import { TerriaRectangle } from "../../core/types";
 import { array, object, string } from "../../core/validators";
 import { buildLegend } from "../legendPlugin/legendPlugin";
 import compileFilterExpression, { MvtFilter } from "./compileFilterExpression";
+import MvtPluginBackend, { MvtLegendEntry } from "./MvtPluginBackend";
 
 interface MvtPluginOptions {
-  backend: Backend;
+  backend: MvtPluginBackend;
 }
 
 type MvtLayerTypeDefinition = "fill" | "line";
@@ -55,27 +55,35 @@ function buildMvtRectangle(metadata: any): TerriaRectangle | null {
   };
 }
 
-const validateMetadata = object({
-  bounds: string,
-  json: string,
-});
-
-const validateMetadataJson = object({
-  tilestats: object({
-    layers: array(object({ layer: string, geometry: string })),
+const parseMetadataJson = makeParseJson(
+  object({
+    bounds: string,
+    json: string,
   }),
-});
+  null,
+  `metadata.json の読み取りに失敗しました。`
+);
 
-const analyzeMetadata = (metadataText: string) => {
-  const [metadata] = maybeParseJson(metadataText);
-  if (!validateMetadata(metadata))
+const parseMetadataJsonInlineJson = makeParseJson(
+  object({
+    tilestats: object({
+      layers: array(object({ layer: string, geometry: string })),
+    }),
+  }),
+  null,
+  `metadata.json の内容が不正です。`
+);
+
+const analyzeMetadata = (logger: Logger, metadataText: string) => {
+  const metadata = parseMetadataJson(logger)(metadataText);
+  if (!metadata)
     return {
       rectangle: null,
       layers: null,
     };
   const rectangle = buildMvtRectangle(metadata);
-  const [json] = maybeParseJson(metadata.json);
-  if (!validateMetadataJson(json)) {
+  const json = parseMetadataJsonInlineJson(logger)(metadata.json);
+  if (!json) {
     return {
       rectangle: rectangle,
       layers: null,
@@ -99,32 +107,27 @@ const mvtPlugin =
     const metadataUrl = getMvtMetadataUrl(node.token.url ?? "");
     const deferredMetadata = backend.fetch(logger, metadataUrl);
     return Deferred.all([deferredItem, deferredLegend, deferredMetadata]).then(
-      ([item, legendMatrix, metadataText]) => {
-        const { rectangle, layers } = analyzeMetadata(metadataText);
+      ([item, maybeLegendEntries, metadataText]) => {
+        const { rectangle, layers } = analyzeMetadata(logger, metadataText);
         const layersByName = layers?.reduce<
           Map<string, { layer: string; geometry: string }>
         >((acc, cur) => {
           acc.set(cur.layer, cur);
           return acc;
         }, new Map());
-        const { rows: legendRows } = legendMatrix
-          ? resolveMatrix(legendMatrix)
-          : {
-              rows: layers
-                ? layers.map(
-                    (layer, i, { length }) =>
-                      new Map([
-                        ["title", layer.layer],
-                        ["mvtLayer", layer.layer],
-                        ["color", `hsl(${(i / length) * 360} 100% 50%)`],
-                      ])
-                  )
-                : [],
-            };
-        const filteredLegendRows = legendRows.filter((row) => {
-          const mvtLayer = row.get("mvtLayer");
+        const legendEntries: MvtLegendEntry[] = maybeLegendEntries
+          ? maybeLegendEntries
+          : layers
+          ? layers.map((layer, i, { length }) => ({
+              title: layer.layer,
+              mvtLayer: layer.layer,
+              color: `hsl(${(i / length) * 360} 100% 50%)`,
+            }))
+          : [];
+        const filteredLegendRows = legendEntries.filter((entry) => {
+          const mvtLayer = entry.mvtLayer;
           if (!mvtLayer) return false;
-          if (row.get("mvtAlwaysShow")) return true;
+          if (entry.mvtAlwaysShow) return true;
           const shouldIgnoreCurrentLayer =
             layersByName && !layersByName.has(mvtLayer);
           return !shouldIgnoreCurrentLayer;
@@ -134,8 +137,8 @@ const mvtPlugin =
         filteredLegendRows
           .slice()
           .sort((a, b) => {
-            const keyA = Number(a.get("mvtLayerOrder"));
-            const keyB = Number(b.get("mvtLayerOrder"));
+            const keyA = Number(a.mvtLayerOrder);
+            const keyB = Number(b.mvtLayerOrder);
             if (Number.isNaN(keyA) || Number.isNaN(keyB)) {
               return 0;
             }
@@ -144,14 +147,14 @@ const mvtPlugin =
           .forEach((row) => {
             // Rows without the "mvtLayer" property are already filtered out.
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            const mvtLayer = row.get("mvtLayer")!;
+            const mvtLayer = row.mvtLayer!;
             const layerMetadata = layersByName?.get(mvtLayer);
-            const mvtFillColor = row.get("mvtFillColor");
-            const mvtLineColor = row.get("mvtLineColor");
-            const mvtLineWidth = Number(row.get("mvtLineWidth") || "1");
-            const mvtFilter = row.get("mvtFilter");
-            const legendColor = row.get("color");
-            const legendOutlineColor = row.get("outlineColor");
+            const mvtFillColor = row.mvtFillColor;
+            const mvtLineColor = row.mvtLineColor;
+            const mvtLineWidth = Number(row.mvtLineWidth || "1");
+            const mvtFilter = row.mvtFilter;
+            const legendColor = row.color;
+            const legendOutlineColor = row.outlineColor;
             const compiledFilter = mvtFilter
               ? compileFilterExpression(logger, mvtFilter)
               : null;

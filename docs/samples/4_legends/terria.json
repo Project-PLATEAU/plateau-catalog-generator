@@ -9,191 +9,191 @@
           "id": "//Mapbox Vector Tiles/道路（東京都23区）",
           "name": "道路（東京都23区）",
           "type": "mvt",
-          "url": "https://plateau.geospatial.jp/main/data/mvt/tran/13100_tokyo/{z}/{x}/{y}.mvt",
           "hideSource": true,
-          "style": {
-            "layers": [
-              {
-                "source-layer": "road",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "hsl(0 100% 50%)"
-                }
-              }
-            ]
-          },
+          "url": "https://plateau.geospatial.jp/main/data/mvt/tran/13100_tokyo/{z}/{x}/{y}.mvt",
           "legends": [
             {
               "title": "凡例",
               "items": [
                 {
-                  "title": "road",
-                  "color": "hsl(0 100% 50%)"
+                  "color": "hsl(0 100% 50%)",
+                  "title": "road"
                 }
               ]
             }
           ],
           "rectangle": {
-            "west": 139.49190633999999,
-            "south": 35.47926424,
             "east": 139.98890746,
-            "north": 35.87386866
+            "north": 35.87386866,
+            "south": 35.47926424,
+            "west": 139.49190633999999
+          },
+          "style": {
+            "layers": [
+              {
+                "type": "fill",
+                "source-layer": "road",
+                "paint": {
+                  "fill-color": "hsl(0 100% 50%)"
+                }
+              }
+            ]
           }
         },
         {
           "id": "//Mapbox Vector Tiles/用途地域（東京都23区）",
           "name": "用途地域（東京都23区）",
           "type": "mvt",
-          "url": "https://plateau.geospatial.jp/main/data/mvt/yotochiiki/13100_tokyo/{z}/{x}/{y}.mvt",
           "hideSource": true,
-          "style": {
-            "layers": [
-              {
-                "source-layer": "yoto_1",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#00b285"
-                }
-              },
-              {
-                "source-layer": "yoto_2",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#7bd2b7"
-                }
-              },
-              {
-                "source-layer": "yoto_3",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#78ce3f"
-                }
-              },
-              {
-                "source-layer": "yoto_4",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#addf21"
-                }
-              },
-              {
-                "source-layer": "yoto_5",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#ebee5e"
-                }
-              },
-              {
-                "source-layer": "yoto_6",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#ffd2b6"
-                }
-              },
-              {
-                "source-layer": "yoto_7",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#ffa638"
-                }
-              },
-              {
-                "source-layer": "yoto_9",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#ffb0c3"
-                }
-              },
-              {
-                "source-layer": "yoto_10",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#ff593d"
-                }
-              },
-              {
-                "source-layer": "yoto_11",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#a794c5"
-                }
-              },
-              {
-                "source-layer": "yoto_12",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#b9eaff"
-                }
-              },
-              {
-                "source-layer": "yoto_13",
-                "type": "fill",
-                "paint": {
-                  "fill-color": "#0ec7ff"
-                }
-              }
-            ]
-          },
+          "url": "https://plateau.geospatial.jp/main/data/mvt/yotochiiki/13100_tokyo/{z}/{x}/{y}.mvt",
           "legends": [
             {
               "title": "凡例",
               "items": [
                 {
-                  "title": "第1種低層住居専用地域",
-                  "color": "#00b285"
+                  "color": "#00b285",
+                  "title": "第1種低層住居専用地域"
                 },
                 {
-                  "title": "第2種低層住居専用地域",
-                  "color": "#7bd2b7"
+                  "color": "#7bd2b7",
+                  "title": "第2種低層住居専用地域"
                 },
                 {
-                  "title": "第1種中高層住居専用地域",
-                  "color": "#78ce3f"
+                  "color": "#78ce3f",
+                  "title": "第1種中高層住居専用地域"
                 },
                 {
-                  "title": "第2種中高層住居専用地域",
-                  "color": "#addf21"
+                  "color": "#addf21",
+                  "title": "第2種中高層住居専用地域"
                 },
                 {
-                  "title": "第1種住居地域",
-                  "color": "#ebee5e"
+                  "color": "#ebee5e",
+                  "title": "第1種住居地域"
                 },
                 {
-                  "title": "第2種住居地域",
-                  "color": "#ffd2b6"
+                  "color": "#ffd2b6",
+                  "title": "第2種住居地域"
                 },
                 {
-                  "title": "準住居地域",
-                  "color": "#ffa638"
+                  "color": "#ffa638",
+                  "title": "準住居地域"
                 },
                 {
-                  "title": "近隣商業地域",
-                  "color": "#ffb0c3"
+                  "color": "#ffb0c3",
+                  "title": "近隣商業地域"
                 },
                 {
-                  "title": "商業地域",
-                  "color": "#ff593d"
+                  "color": "#ff593d",
+                  "title": "商業地域"
                 },
                 {
-                  "title": "準工業地域",
-                  "color": "#a794c5"
+                  "color": "#a794c5",
+                  "title": "準工業地域"
                 },
                 {
-                  "title": "工業地域",
-                  "color": "#b9eaff"
+                  "color": "#b9eaff",
+                  "title": "工業地域"
                 },
                 {
-                  "title": "工業専用地域",
-                  "color": "#0ec7ff"
+                  "color": "#0ec7ff",
+                  "title": "工業専用地域"
                 }
               ]
             }
           ],
           "rectangle": {
-            "west": 139.49179388,
-            "south": 35.47773976,
             "east": 139.98871072,
-            "north": 35.87436704
+            "north": 35.87436704,
+            "south": 35.47773976,
+            "west": 139.49179388
+          },
+          "style": {
+            "layers": [
+              {
+                "type": "fill",
+                "source-layer": "yoto_1",
+                "paint": {
+                  "fill-color": "#00b285"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_2",
+                "paint": {
+                  "fill-color": "#7bd2b7"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_3",
+                "paint": {
+                  "fill-color": "#78ce3f"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_4",
+                "paint": {
+                  "fill-color": "#addf21"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_5",
+                "paint": {
+                  "fill-color": "#ebee5e"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_6",
+                "paint": {
+                  "fill-color": "#ffd2b6"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_7",
+                "paint": {
+                  "fill-color": "#ffa638"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_9",
+                "paint": {
+                  "fill-color": "#ffb0c3"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_10",
+                "paint": {
+                  "fill-color": "#ff593d"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_11",
+                "paint": {
+                  "fill-color": "#a794c5"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_12",
+                "paint": {
+                  "fill-color": "#b9eaff"
+                }
+              },
+              {
+                "type": "fill",
+                "source-layer": "yoto_13",
+                "paint": {
+                  "fill-color": "#0ec7ff"
+                }
+              }
+            ]
           }
         }
       ]

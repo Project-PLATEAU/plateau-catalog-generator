@@ -9,24 +9,24 @@
           "id": "//建物モデル/建物モデル (千代田区)",
           "name": "建物モデル (千代田区)",
           "type": "3d-tiles",
-          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json",
           "hideSource": true,
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json",
           "filters": [
             {
               "name": "高さで絞り込み",
-              "property": "計測高さ",
-              "minimumValue": 0,
+              "maximumShown": 200,
               "maximumValue": 200,
               "minimumShown": 0,
-              "maximumShown": 200
+              "minimumValue": 0,
+              "property": "計測高さ"
             },
             {
               "name": "地上階数で絞り込み",
-              "property": "地上階数",
-              "minimumValue": 1,
+              "maximumShown": 50,
               "maximumValue": 50,
               "minimumShown": 1,
-              "maximumShown": 50
+              "minimumValue": 1,
+              "property": "地上階数"
             }
           ]
         }

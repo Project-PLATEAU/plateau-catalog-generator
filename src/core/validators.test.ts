@@ -1,4 +1,4 @@
-import { array, boolean, number, object, string } from "./validators";
+import { array, boolean, number, object, optional, string } from "./validators";
 
 test("validators", () => {
   const validator = object({
@@ -6,6 +6,7 @@ test("validators", () => {
     b: boolean,
     c: array(string),
     d: array(object({ e: string })),
+    f: optional(boolean),
   });
   const validValue = {
     a: 1,
@@ -21,6 +22,7 @@ test("validators", () => {
       b: boolean;
       c: string[];
       d: { e: string }[];
+      f?: boolean;
     };
     // Ensure type infers correctly.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -31,4 +33,6 @@ test("validators", () => {
   expect(validator({ ...validValue, b: null })).toEqual(false);
   expect(validator({ ...validValue, c: null })).toEqual(false);
   expect(validator({ ...validValue, d: [{ e: null }] })).toEqual(false);
+  expect(validator({ ...validValue, f: true })).toEqual(true);
+  expect(validator({ ...validValue, f: 1 })).toEqual(false);
 });

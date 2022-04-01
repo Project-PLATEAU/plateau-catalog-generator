@@ -1,0 +1,2 @@
+name[0],type,url,feature_info_template,feature_info_template[include],feature_info_template[exclude]
+Feature info templates,3d-tiles,https://example.com/tileset.json,bldg,"arakawa*,kandagawa*",tamagawa*,,

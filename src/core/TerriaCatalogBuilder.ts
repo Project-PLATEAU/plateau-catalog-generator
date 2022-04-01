@@ -1,15 +1,8 @@
-import { isMatch } from "matcher";
-import Backend from "./Backend";
 import Deferred from "./Deferred";
 import Logger from "./Logger";
-import resolveMatrix from "./resolveMatrix";
 import { Token } from "./tokenize";
 import { Node } from "./TreeBuilder";
-import {
-  TerriaCatalogItem,
-  TerriaCompositeOrGroup,
-  TerriaFeatureInfoTemplate,
-} from "./types";
+import { TerriaCatalogItem, TerriaCompositeOrGroup } from "./types";
 
 export interface BuildFunction {
   (
@@ -25,65 +18,11 @@ export interface Plugin {
 
 export default class TerriaCatalogBuilder {
   protected buildWithPlugins: BuildFunction;
-  constructor(private backend: Backend, private plugins: Plugin[] = []) {
+  constructor(private plugins: Plugin[] = []) {
     this.buildWithPlugins = this.plugins.reduce(
       (acc, cur) => cur(acc),
       this.buildPerType.bind(this)
     );
-  }
-  protected generateDescription(
-    node: Node<Token>,
-    logger: Logger
-  ): Deferred<string | undefined> {
-    const { descriptionTemplateName, descriptionVariables } = node.token;
-    if (!descriptionTemplateName)
-      return new Deferred((resolve) => resolve(undefined));
-    return this.backend
-      .getDescriptionTemplate(logger, descriptionTemplateName)
-      .then((descriptionTemplate) => {
-        const description = descriptionTemplate.replace(
-          /{{(\d+)}}/g,
-          (match, p1) => descriptionVariables.get(Number(p1)) ?? ""
-        );
-        return description;
-      });
-  }
-  protected generateFeatureInfoTemplate(
-    node: Node<Token>,
-    logger: Logger
-  ): Deferred<TerriaFeatureInfoTemplate | null> {
-    const name = node.token.featureInfoTemplateName;
-    const includePatterns = node.token.featureInfoTemplateInclude;
-    const excludePatterns = node.token.featureInfoTemplateExclude;
-    if (!name) return new Deferred((resolve) => resolve(null));
-    return this.backend.getFeatureInfoTemplate(logger, name).then((matrix) => {
-      const { rows, keys } = resolveMatrix(matrix);
-      if (!keys.includes("name")) {
-        logger.error(`属性テンプレート ${name} に "name" 列がありません。`);
-        return null;
-      }
-      if (!keys.includes("property")) {
-        logger.error(`属性テンプレート ${name} に "property" 列がありません。`);
-        return null;
-      }
-      const innerHtml = rows
-        .filter((row) => {
-          if (isMatch(row.get("property") as string, excludePatterns))
-            return false;
-          if (isMatch(row.get("property") as string, includePatterns))
-            return true;
-          return row.get("default") !== "exclude";
-        })
-        .map(
-          (row) =>
-            `<tr><td>${row.get("name")}</td><td>{{${row.get(
-              "property"
-            )}}}</td></tr>`
-        )
-        .join("");
-      const template = `<table>${innerHtml}</table>`;
-      return { template };
-    });
   }
   protected buildGroupOrComposite(
     node: Node<Token>,
@@ -95,28 +34,20 @@ export default class TerriaCatalogBuilder {
         this.build(childNode, id, logger.spawn(childNode.token.name))
       )
     );
-    const deferredDescription = this.generateDescription(node, logger);
-    return Deferred.all([deferredMembers, deferredDescription]).then(
-      ([members, description]) => {
-        const group: Partial<TerriaCompositeOrGroup> = {};
-        group.id = id;
-        group.name = node.token.name;
-        group.type = node.token.type as "group" | "composite";
-        if (description != null) group.description = description;
-        group.members = members;
-        return group as TerriaCompositeOrGroup;
-      }
-    );
+    return Deferred.all([deferredMembers]).then(([members]) => {
+      const group: Partial<TerriaCompositeOrGroup> = {};
+      group.id = id;
+      group.name = node.token.name;
+      group.type = node.token.type as "group" | "composite";
+      group.members = members;
+      return group as TerriaCompositeOrGroup;
+    });
   }
   protected buildItem(
     node: Node<Token>,
-    id: string,
-    logger: Logger
+    id: string
   ): Deferred<TerriaCatalogItem> {
-    return Deferred.all([
-      this.generateDescription(node, logger),
-      this.generateFeatureInfoTemplate(node, logger),
-    ]).then(([description, featureInfoTemplate]) => {
+    return new Deferred((resolve) => {
       const item: Partial<TerriaCatalogItem> = {};
       item.id = id;
       item.name = node.token.name;
@@ -125,8 +56,6 @@ export default class TerriaCatalogBuilder {
         item.url = node.token.url;
         item.hideSource = true;
       }
-      if (description != null) item.description = description;
-      if (featureInfoTemplate) item.featureInfoTemplate = featureInfoTemplate;
       if (node.children.length) {
         item.customProperties = {
           switchableUrls: node.children.map((child) => ({
@@ -135,7 +64,7 @@ export default class TerriaCatalogBuilder {
           })),
         };
       }
-      return item as TerriaCatalogItem;
+      resolve(item as TerriaCatalogItem);
     });
   }
   buildPerType(
@@ -149,7 +78,7 @@ export default class TerriaCatalogBuilder {
       case "composite":
         return this.buildGroupOrComposite(node, id, logger);
       default:
-        return this.buildItem(node, id, logger);
+        return this.buildItem(node, id);
     }
   }
   build(

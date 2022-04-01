@@ -1,27 +1,26 @@
-import Backend from "../../core/Backend";
 import Deferred from "../../core/Deferred";
-import resolveMatrix from "../../core/resolveMatrix";
 import { Plugin } from "../../core/TerriaCatalogBuilder";
 import { TerriaLegendItem } from "../../core/types";
+import LegendPluginBackend, { LegendEntry } from "./LegendPluginBackend";
 
 interface LegendPluginOptions {
-  backend: Backend;
+  backend: LegendPluginBackend;
 }
 
 const FALSY_STRINGS = ["", "0", "false"];
 
-function buildLegendItem(mapping: Map<string, string>): TerriaLegendItem {
+function buildLegendItem(mapping: LegendEntry): TerriaLegendItem {
   const target: TerriaLegendItem = {};
-  const title = mapping.get("title");
-  const maxMultipleTitlesShowed = mapping.get("maxMultipleTitlesShowed");
-  const titleAbove = mapping.get("titleAbove");
-  const titleBelow = mapping.get("titleBelow");
-  const color = mapping.get("color");
-  const outlineColor = mapping.get("outlineColor");
-  const imageUrl = mapping.get("imageUrl");
-  const addSpacingAbove = mapping.get("addSpacingAbove");
-  const imageHeight = mapping.get("imageHeight");
-  const imageWidth = mapping.get("imageWidth");
+  const title = mapping.title;
+  const maxMultipleTitlesShowed = mapping.maxMultipleTitlesShowed;
+  const titleAbove = mapping.titleAbove;
+  const titleBelow = mapping.titleBelow;
+  const color = mapping.color;
+  const outlineColor = mapping.outlineColor;
+  const imageUrl = mapping.imageUrl;
+  const addSpacingAbove = mapping.addSpacingAbove;
+  const imageHeight = mapping.imageHeight;
+  const imageWidth = mapping.imageWidth;
   if (title) target.title = title;
   if (maxMultipleTitlesShowed)
     target.maxMultipleTitlesShowed = Number(maxMultipleTitlesShowed);
@@ -39,7 +38,7 @@ function buildLegendItem(mapping: Map<string, string>): TerriaLegendItem {
   return target;
 }
 
-export const buildLegend = (legendRows: Map<string, string>[]) => {
+export const buildLegend = (legendRows: readonly LegendEntry[]) => {
   const legend = {
     title: "凡例",
     items: legendRows.map(buildLegendItem),
@@ -56,9 +55,8 @@ const legendPlugin =
     if (!legendName) return deferredItem;
     const deferredLegend = backend.getLegend(logger, legendName);
     return Deferred.all([deferredItem, deferredLegend]).then(
-      ([item, legendMatrix]) => {
-        const { rows } = resolveMatrix(legendMatrix);
-        const legend = buildLegend(rows);
+      ([item, legendEntries]) => {
+        const legend = buildLegend(legendEntries);
         item.legends = [legend];
         return item;
       }

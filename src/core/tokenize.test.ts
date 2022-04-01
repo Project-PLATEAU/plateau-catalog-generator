@@ -16,16 +16,8 @@ describe("tokenize", () => {
       Array [
         Object {
           "depth": 1,
-          "descriptionTemplateName": "group_common",
-          "descriptionVariables": Map {
-            0 => "plateau",
-          },
-          "featureInfoTemplateExclude": Array [],
-          "featureInfoTemplateInclude": Array [],
-          "featureInfoTemplateName": "",
           "index": 0,
           "name": "PLATEAU Dataset",
-          "options": Array [],
           "props": Map {
             "name[1]" => "PLATEAU Dataset",
             "name[2]" => "",
@@ -43,24 +35,8 @@ describe("tokenize", () => {
         },
         Object {
           "depth": 2,
-          "descriptionTemplateName": "dataset_common",
-          "descriptionVariables": Map {
-            0 => "evacuation site",
-          },
-          "featureInfoTemplateExclude": Array [
-            "capacity_*",
-          ],
-          "featureInfoTemplateInclude": Array [
-            "phone_number",
-            "area",
-          ],
-          "featureInfoTemplateName": "evacuation_site",
           "index": 2,
           "name": "Evacuation sites",
-          "options": Array [
-            "initial_camera",
-            "shp_common",
-          ],
           "props": Map {
             "name[1]" => "",
             "name[2]" => "Evacuation sites",

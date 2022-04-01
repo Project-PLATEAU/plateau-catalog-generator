@@ -27,10 +27,8 @@ TerriaJS 製 PLATEAU VIEW のためのカタログファイルジェネレータ
 コマンドラインで以下のコマンドを実行します。
 
 ```powershell
-npm i -g https://github.com/Project-PLATEAU/plateau-catalog-generator/releases/download/v0.1.0/plateau-catalog-generator-0.1.0.tgz
+npm i -g https://github.com/Project-PLATEAU/plateau-catalog-generator/releases/download/v1.0.0/plateau-catalog-generator-1.0.0.tgz
 ```
-
-※ GitHub で公開するまで、上記 URL は仮のものです。
 
 インストールが終わったら、正常にインストールできたことを確認するために次のコマンドを実行してください。
 

@@ -20,10 +20,14 @@ export function object<
   };
 }
 
-export function array<T extends Validator<any>>(subValidator: T) {
-  return (
-    value: unknown
-  ): value is T extends Validator<infer U> ? U[] : never => {
+export function optional<T>(subValidator: Validator<T>) {
+  return (value: unknown): value is T | undefined => {
+    return value === undefined || subValidator(value);
+  };
+}
+
+export function array<T>(subValidator: Validator<T>) {
+  return (value: unknown): value is T[] => {
     if (!Array.isArray(value)) return false;
     return value.every((v) => {
       const isValid = subValidator(v);

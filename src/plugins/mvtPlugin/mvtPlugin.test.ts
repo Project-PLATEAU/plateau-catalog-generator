@@ -10,18 +10,14 @@ describe("mvtPlugin", () => {
     const initDocument = await new TestApp(rootDir, (backend) => [
       mvtPlugin({ backend }),
     ]).buildTerriaInitDocument();
-
-    // const backend = new NodeFileBackend(rootDir);
-    // backend.fetch = () => new Deferred((resolve) => resolve(""));
-    // const app = new App(backend, {
-    //   plugins: [mvtPlugin({ backend })],
-    //   filterPattern: "",
-    // });
-    // const initDocument = await app.buildTerriaInitDocument();
     expect(initDocument).toMatchInlineSnapshot(`
       Object {
         "catalog": Array [
           Object {
+            "description": "- ❌ : metadata.json の読み取りに失敗しました。
+      SyntaxError: Unexpected end of JSON input
+
+      ",
             "hideSource": true,
             "id": "//Test dataset",
             "legends": Array [
@@ -34,7 +30,7 @@ describe("mvtPlugin", () => {
                 "title": "凡例",
               },
             ],
-            "name": "Test dataset",
+            "name": "❌Test dataset",
             "style": Object {
               "layers": Array [
                 Object {

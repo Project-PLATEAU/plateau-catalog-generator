@@ -1,6 +1,5 @@
 {
   "name": "plateau-catalog-generator",
-  "private": true,
   "version": "1.0.0",
   "description": "TerriaJS 製 PLATEAU VIEW のためのカタログファイルジェネレーター",
   "bin": "./build/cli/index.js",
@@ -13,22 +12,19 @@
     "check:prettier": "prettier ./src/ --check",
     "check:tsc": "tsc --noEmit"
   },
-  "author": "Pacific Spatial Solutions Inc.",
   "type": "module",
-  "license": "(private)",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "axios": "^0.24.0",
     "commander": "^9.0.0",
     "jsep": "^1.2.0",
-    "matcher": "^5.0.0"
-  },
-  "devDependencies": {
+    "matcher": "^5.0.0",
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
+    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^5.8.0",

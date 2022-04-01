@@ -1,0 +1,53 @@
+{
+  "catalog": [
+    {
+      "id": "//建物モデル",
+      "name": "建物モデル",
+      "type": "group",
+      "members": [
+        {
+          "id": "//建物モデル/建物モデル (千代田区)",
+          "name": "建物モデル (千代田区)",
+          "type": "3d-tiles",
+          "hideSource": true,
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json"
+        }
+      ]
+    },
+    {
+      "id": "//橋梁モデル",
+      "name": "橋梁モデル",
+      "type": "group",
+      "members": [
+        {
+          "id": "//橋梁モデル/橋梁モデル (東京都23区)",
+          "name": "橋梁モデル (東京都23区)",
+          "type": "3d-tiles",
+          "hideSource": true,
+          "url": "https://plateau.geospatial.jp/main/data/3d-tiles/brid/13100_tokyo/tileset.json"
+        }
+      ]
+    }
+  ],
+  "initialCamera": {
+    "east": 139.78656930734346,
+    "north": 35.691640758557284,
+    "south": 35.669499299672474,
+    "west": 139.7383852716238,
+    "direction": {
+      "x": 0.7259273188627007,
+      "y": -0.5727789601171913,
+      "z": 0.380727974511829
+    },
+    "position": {
+      "x": -3962169.8364513335,
+      "y": 3352586.704708458,
+      "z": 3698023.4610325196
+    },
+    "up": {
+      "x": -0.27833913197344085,
+      "y": 0.2615484931093981,
+      "z": 0.9241859733649255
+    }
+  }
+}
